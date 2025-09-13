@@ -23,11 +23,16 @@ def initialize_predictors():
         else:
             print("⚠️ Disease model not found, using simulation")
             
-        # Initialize quality predictor  
-        quality_model_path = os.path.join('..', 'models', 'quality_model.keras')
-        if os.path.exists(quality_model_path):
-            quality_predictor = QualityPredictor(quality_model_path)
-            print("✅ Quality model loaded successfully")
+         # Initialize quality predictor
+        quality_model_keras = os.path.join('..', 'models', 'quality_model.keras')
+        quality_model_pt = os.path.join('..', 'models', 'quality_model.pt')
+
+        if os.path.exists(quality_model_keras):
+            quality_predictor = QualityPredictor(quality_model_keras)
+            print("✅ Quality model loaded successfully (Keras)")
+        elif os.path.exists(quality_model_pt):
+            quality_predictor = QualityPredictor(quality_model_pt)
+            print("✅ Quality model loaded successfully (PyTorch)")
         else:
             print("⚠️ Quality model not found, using simulation")
             

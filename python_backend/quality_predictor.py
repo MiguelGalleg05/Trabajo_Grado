@@ -6,7 +6,18 @@ import io
 class QualityPredictor:
     def __init__(self, model_path):
         """Initialize the quality predictor with your trained model"""
-        self.model = tf.keras.models.load_model(model_path)
+            self.model_path = model_path
+        if model_path.endswith('.pt'):
+            import torch
+            self.framework = 'torch'
+            self.torch = torch
+            self.model = torch.load(model_path, map_location=torch.device('cpu'))
+            self.model.eval()
+        else:
+            import tensorflow as tf
+            self.framework = 'keras'
+            self.tf = tf
+            self.model = tf.keras.models.load_model(model_path)
         
         # Your quality classes (adjust based on your training)
         self.quality_classes = [
@@ -75,8 +86,11 @@ class QualityPredictor:
         # Convert to array and normalize
         image_array = np.array(image) / 255.0
         
-        # Add batch dimension
-        image_array = np.expand_dims(image_array, axis=0)
+        if self.framework == 'torch':
+            image_array = self.torch.tensor(image_array, dtype=self.torch.float32)
+            image_array = image_array.permute(2, 0, 1).unsqueeze(0)
+        else:
+            image_array = np.expand_dims(image_array, axis=0)
         
         return image_array
     
@@ -87,7 +101,14 @@ class QualityPredictor:
             processed_image = self.preprocess_image(image_file)
             
             # Make prediction
-            predictions = self.model.predict(processed_image)
+            if self.framework == 'torch':
+                with self.torch.no_grad():
+                    outputs = self.model(processed_image)
+                    if isinstance(outputs, (list, tuple)):
+                        outputs = outputs[0]
+                    predictions = self.torch.softmax(outputs, dim=1).cpu().numpy()
+            else:
+                predictions = self.model.predict(processed_image)
             
             # Get predicted class and confidence
             predicted_class_idx = np.argmax(predictions[0])
