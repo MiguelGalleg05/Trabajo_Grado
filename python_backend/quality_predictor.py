@@ -6,7 +6,7 @@ import io
 class QualityPredictor:
     def __init__(self, model_path):
         """Initialize the quality predictor with your trained model"""
-            self.model_path = model_path
+        self.model_path = model_path
         if model_path.endswith('.pt'):
             import torch
             self.framework = 'torch'

@@ -20,8 +20,7 @@ const playfairDisplay = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Sistema de Análisis de Tomate - Trabajo de Grado",
-  description: "Plataforma profesional para análisis de enfermedades y calidad en hojas de tomate",
-  generator: "v0.app",
+  description: "Plataforma profesional para análisis de enfermedades y calidad en hojas de tomate"
 };
 
 export default function RootLayout({
