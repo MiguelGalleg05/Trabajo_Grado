@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ../python_backend
+    container_name: tomato-backend
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ../python_backend/models:/app/models:ro
+      - ./data:/app/data
+      - ./data/app.db:/app/app.db
+    expose:
+      - "5000"
+    command: ["python", "app.py"]
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: ./deploy/frontend.Dockerfile
+    container_name: tomato-frontend
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=/api
+      - NODE_ENV=production
+    depends_on:
+      - backend
+    expose:
+      - "3000"
+
+  nginx:
+    image: nginx:alpine
+    container_name: tomato-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - frontend
+      - backend
+    restart: unless-stopped
+
+volumes:
+  data:
+    driver: local
+

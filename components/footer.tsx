@@ -1,4 +1,4 @@
-import { GraduationCap, University, BookOpen } from "lucide-react"
+﻿import { GraduationCap, University, BookOpen } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -14,7 +14,7 @@ export default function Footer() {
             <div className="space-y-2 text-sm text-muted-foreground">
               <p className="font-medium text-foreground">Sistema de Análisis de Enfermedades y Calidad en Tomates</p>
               <p>Aplicación de técnicas de visión por computadora e inteligencia artificial</p>
-              <p>Carrera: Ingeniería en Informática</p>
+              <p>Carrera: Ingeniería de Sistemas</p>
             </div>
           </div>
 
@@ -25,10 +25,10 @@ export default function Footer() {
               <h3 className="font-serif font-semibold text-foreground">Universidad</h3>
             </div>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <p className="font-medium text-foreground">Universidad [Nombre de la Universidad]</p>
-              <p>Facultad de Ingeniería</p>
+              <p className="font-medium text-foreground">Universidad Católica Luis Amigó</p>
+              <p>Facultad de Arquitectura e Ingenierías</p>
               <p>Departamento de Informática</p>
-              <p>Año: 2024</p>
+              <p>Año: 2025</p>
             </div>
           </div>
 
@@ -40,15 +40,12 @@ export default function Footer() {
             </div>
             <div className="space-y-2 text-sm text-muted-foreground">
               <p>
-                <span className="font-medium text-foreground">Autor:</span> [Nombre del Estudiante]
+                <span className="font-medium text-foreground">Autores:</span> Miguel Gallego Alvarez y Juan Garcia Puerta
               </p>
               <p>
-                <span className="font-medium text-foreground">Director:</span> [Nombre del Director]
+                <span className="font-medium text-foreground">Tutor:</span> Juan Camilo Briñez
               </p>
-              <p>
-                <span className="font-medium text-foreground">Co-director:</span> [Nombre del Co-director]
-              </p>
-              <p className="text-xs">Desarrollado como requisito para optar al título de Ingeniero en Informática</p>
+              <p className="text-xs">Desarrollado como requisito para optar al título de Ingeniero en Sistemas</p>
             </div>
           </div>
         </div>
@@ -57,7 +54,7 @@ export default function Footer() {
         <div className="mt-8 pt-6 border-t border-border">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="text-sm text-muted-foreground">
-              <p>© 2024 - Trabajo de Grado en Ingeniería Informática</p>
+              <p>© 2025 - Trabajo de Grado en Ingeniería de Sistemas</p>
             </div>
             <div className="text-sm text-muted-foreground">
               <p>Sistema desarrollado con fines académicos y de investigación</p>

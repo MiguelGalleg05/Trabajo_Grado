@@ -1,4 +1,4 @@
-export default function Loading() {
+ export default function Loading() {
   return (
     <div className="min-h-screen bg-background">
       <header className="bg-card border-b border-border">

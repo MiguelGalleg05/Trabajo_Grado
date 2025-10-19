@@ -30,3 +30,15 @@ next-env.d.ts
 python_backend/models/*.pt
 python_backend/models/*.keras
 python_backend/models/*.h5
+
+# Python caches y base de datos local
+__pycache__/
+*.pyc
+python_backend/__pycache__/
+python_backend/app.db
+
+# Datos generados en despliegue local
+deploy/data/
+
+# SO
+.DS_Store
